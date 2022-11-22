@@ -1,0 +1,11 @@
+.login-form--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 27.5rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+}
