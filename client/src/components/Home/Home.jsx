@@ -1,10 +1,17 @@
-import { useState } from "react";
-import LoginForm from "../LoginForm/LoginForm";
-import "./Home.css";
-import KiwiImg from "../../assets/imgs/kiwi1.jpg";
+import { useState } from 'react';
+import LoginForm from '../LoginForm/LoginForm';
+import './Home.css';
+import KiwiImg from '../../assets/imgs/kiwi1.jpg';
 
 const Home = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
+
+  const handleLogin = () => {
+    if (!showLoginForm) {
+      setShowLoginForm(true);
+    }
+  };
+
   return (
     <div className="home--container">
       <div className="home-hero-img--wrapper">
@@ -13,19 +20,22 @@ const Home = () => {
       <div className="home-hero--wrapper">
         <h1>Virtual Kiwi!</h1>
         <p class="desc">Welcome to your personal kiwi!</p>
-        {showLoginForm && (
-          <>
-            <LoginForm />
-          </>
-        )}
+        {showLoginForm && <LoginForm />}
         <div className="home-button--wrapper">
-          <button
-            className="button button-base"
-            onClick={() => setShowLoginForm(true)}
-          >
+          <button className="button button-base" onClick={handleLogin}>
             Login
           </button>
-          <button className="button button-inverted">Register</button>
+          {showLoginForm && (
+            <button
+              className="button button-inverted"
+              onClick={() => setShowLoginForm(false)}
+            >
+              Back
+            </button>
+          )}
+          {!showLoginForm && (
+            <button className="button button-inverted">Register</button>
+          )}
         </div>
       </div>
     </div>
