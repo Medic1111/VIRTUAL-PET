@@ -12,10 +12,11 @@
   border-radius: 6px;
   padding-left: 1.2rem;
   font-size: 2rem;
+  font-family: "Indie Flower", cursive, sans-serif;
 }
 
 .form-input:focus { 
   outline: none !important;
-  border: 1px solid #60452366;
+  border: 1px solid #604423c7;
 ;
 }
