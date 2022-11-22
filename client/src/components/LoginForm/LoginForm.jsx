@@ -1,8 +1,8 @@
-import './LoginForm.css';
+import "./LoginForm.css";
 
-const LoginForm = () => {
+const LoginForm = ({ formAnimation }) => {
   return (
-    <div className="login-form--container">
+    <div className="login-form--container ">
       <input className="form-input" type="text" placeholder="Username" />
       <input
         className="form-input"
