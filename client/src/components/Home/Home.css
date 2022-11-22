@@ -1,7 +1,9 @@
 .home--container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: 2fr 2fr
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 10rem;
+  width: 70%;
 }
 
 .home-hero--wrapper {
@@ -15,18 +17,17 @@
 .home-hero-img--wrapper {
   align-self: center;
   justify-self: flex-end;
+  transform: translateX(2.4rem);
 }
 
-.kiwiIMG {  
-  width: 50%;
-  height: 35%;
-  min-width: auto;
-  margin-left: 50%;
+.kiwiIMG {
+  width: 600px;
+  height: 400px;
 }
 
 h1 {
   font-size: 7.2rem;
-  font-family: 'Indie Flower', cursive, sans-serif;
+  font-family: "Indie Flower", cursive, sans-serif;
   padding-bottom: 0;
 }
 
@@ -38,18 +39,18 @@ h1 {
 }
 
 .desc {
-    font-size: 2rem;
-    text-align: center;
-    font-family: 'Indie Flower', cursive, sans-serif;
-    transform: translateY(-1.5rem);
+  font-size: 2rem;
+  text-align: center;
+  font-family: "Indie Flower", cursive, sans-serif;
+  transform: translateY(-1.5rem);
 }
 
 .button {
-    padding: 1.2rem 2.4rem;
-    font-size: 2.4rem;
-    border-radius: 0.6rem;
-    font-weight: 700;
-    transition: all 0.2s;
+  padding: 1.2rem 2.4rem;
+  font-size: 2.4rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  transition: all 0.2s;
 }
 
 .button:hover,
@@ -70,13 +71,13 @@ h1 {
 }
 
 .button-inverted {
-    background-color: #fff;
-    border: 1px solid #604623;
-    color: #604623;
+  background-color: #fff;
+  border: 1px solid #604623;
+  color: #604623;
 }
 
 .button-inverted:hover,
 .button-inverted:active {
-    background-color: #604623;
-    color: #fff;
+  background-color: #604623;
+  color: #fff;
 }

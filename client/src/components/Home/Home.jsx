@@ -1,5 +1,5 @@
-import './Home.css';
-import KiwiImg from '../../assets/imgs/kiwi1.jpg';
+import "./Home.css";
+import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 
 const Home = () => {
   return (
