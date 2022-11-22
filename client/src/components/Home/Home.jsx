@@ -1,4 +1,5 @@
 import "./Home.css";
+import Button from "../Button/Button";
 import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 
 const Home = () => {
@@ -11,8 +12,8 @@ const Home = () => {
         <h1>Virtual Kiwi!</h1>
         <p class="desc">Welcome to your personal kiwi!</p>
         <div className="home-button--wrapper">
-          <button className="button button-normal">Login</button>
-          <button className="button button-inverted">Register</button>
+          <Button buttonType="base" text="Login" />
+          <Button buttonType="inverted" text="Register" />
         </div>
       </div>
     </div>
