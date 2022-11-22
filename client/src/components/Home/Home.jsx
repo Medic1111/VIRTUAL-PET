@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import LoginForm from '../LoginForm/LoginForm';
-import './Home.css';
-import KiwiImg from '../../assets/imgs/kiwi1.jpg';
+import { useState } from "react";
+import LoginForm from "../LoginForm/LoginForm";
+import "./Home.css";
+import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 
 const Home = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
-
+  let buttonAnimation = showLoginForm ? " button-login-animation" : "";
   const handleLogin = () => {
     if (!showLoginForm) {
       setShowLoginForm(true);
@@ -21,7 +21,7 @@ const Home = () => {
         <h1>Virtual Kiwi!</h1>
         <p class="desc">Welcome to your personal kiwi!</p>
         {showLoginForm && <LoginForm />}
-        <div className="home-button--wrapper">
+        <div className={"home-button--wrapper" + buttonAnimation}>
           <button className="button button-base" onClick={handleLogin}>
             Login
           </button>

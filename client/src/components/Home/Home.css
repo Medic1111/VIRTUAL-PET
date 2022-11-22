@@ -38,6 +38,12 @@ h1 {
   display: flex;
   width: 27.5rem;
   gap: 1.5rem;
+  position: absolute;
+  transform: translateY(10rem);
+  transition: all 0.2s;
+}
+.button-login-animation {
+  transform: translateY(15rem);
 }
 
 .desc {
@@ -52,8 +58,8 @@ h1 {
 }
 
 .button {
-  padding: .4rem;
-  font-size: 3.3rem;
+  padding: 0.4rem;
+  font-size: 3rem;
   border-radius: 6px;
   font-weight: 700;
   transition: all 0.2s;
