@@ -5,8 +5,16 @@ const userSchema = new mongoose.Schema({
   username: { type: String, require, unique: true },
   password: { type: String, require },
   pet: {
-    type: Array,
-    default: [],
+    pet_name: { type: String, default: "Kiwi" },
+    level: { type: Number, default: 0 },
+    full_level: { type: Number, default: 50 },
+    happy_level: { type: Number, default: 50 },
+    health_level: { type: Number, default: 50 },
+    smart_level: { type: Number, default: 50 },
+    last_cared: { type: String, default: new Date().toISOString() },
+    last_fed: { type: String, default: new Date().toISOString() },
+    last_played: { type: String, default: new Date().toISOString() },
+    last_study: { type: String, default: new Date().toISOString() },
   },
 });
 

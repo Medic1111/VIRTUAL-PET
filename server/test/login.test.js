@@ -10,7 +10,7 @@ describe("Testing the Login route possible instances", () => {
     await request(app)
       .post("/api/v1/login")
       .send(data)
-      .expect(201)
+      .expect(200)
       .expect("Content-Type", /json/)
       .then((serverRes) => {
         expect(serverRes.body).toBeDefined();

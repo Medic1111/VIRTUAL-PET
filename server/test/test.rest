@@ -7,8 +7,8 @@ POST http://localhost:3002/api/v1/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "medic121@medic.com",
-  "username": "medic11211",
+  "email": "medic11@medic.com",
+  "username": "medic11",
   "password": "password"
 }
 
@@ -20,7 +20,7 @@ POST http://localhost:3002/api/v1/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "medic111111",
+  "username": "medic11",
   "password": "password"
 }
 
