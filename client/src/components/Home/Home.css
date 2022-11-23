@@ -1,0 +1,96 @@
+.home--container {
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 10rem;
+  width: 70%;
+}
+
+.home-hero--wrapper {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-6.4rem);
+}
+
+.home-hero-img--wrapper {
+  align-self: center;
+  justify-self: flex-end;
+  transform: translateX(2.4rem);
+}
+
+.kiwiIMG {
+  width: 600px;
+  height: 400px;
+}
+
+h1 {
+  font-size: 7.2rem;
+  font-family: "Indie Flower", cursive, sans-serif;
+  padding-bottom: 0;
+}
+
+.home-button--wrapper {
+  margin: 1rem 0;
+  display: flex;
+  width: 27.5rem;
+  gap: 1.5rem;
+  position: absolute;
+  transform: translateY(10rem);
+  transition: all 0.2s;
+}
+.button-login-animation {
+  transform: translateY(15rem);
+}
+
+.desc {
+  font-size: 2rem;
+  text-align: center;
+  font-family: "Indie Flower", cursive, sans-serif;
+  transform: translateY(-1.5rem);
+}
+
+.home-button--wrapper .button {
+  width: 50%;
+}
+
+.button {
+  padding: 0.4rem;
+  font-size: 3rem;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: all 0.2s;
+  font-family: "Indie Flower", cursive, sans-serif;
+}
+
+.button:hover,
+.button:active {
+  cursor: pointer;
+}
+
+.button-base {
+  background-color: #604623;
+  border: 1px solid #604623;
+  color: #fff;
+}
+
+.button-base:hover,
+.button-base:active {
+  background-color: #fff;
+  color: #604623;
+}
+
+.button-inverted {
+  background-color: #fff;
+  border: 1px solid #604623;
+  color: #604623;
+}
+
+.button-inverted:hover,
+.button-inverted:active {
+  background-color: #604623;
+  color: #fff;
+}
