@@ -1,16 +1,30 @@
-import "./LoginForm.css";
+import './LoginForm.css';
 
-const LoginForm = ({ formAnimation }) => {
+const LoginForm = ({ loginFormData, setLoginFormData }) => {
+  const handleInputData = (event) => {
+    const { name, value } = event.target;
+    setLoginFormData({ ...loginFormData, [name]: value });
+  };
+
   return (
-    <div className="login-form--container ">
-      <input className="form-input" type="text" placeholder="Username" />
+    <form className="login-form--container">
+      <input
+        className="form-input"
+        type="text"
+        name="username"
+        placeholder="Username"
+        value={loginFormData.username}
+        onChange={handleInputData}
+      />
       <input
         className="form-input"
         type="password"
+        name="password"
         placeholder="Password"
-        required
+        value={loginFormData.password}
+        onChange={handleInputData}
       />
-    </div>
+    </form>
   );
 };
 
