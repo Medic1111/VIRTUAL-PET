@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
     health_level: { type: Number, default: 50 },
     smart_level: { type: Number, default: 50 },
     last_cared: { type: String, default: new Date().toISOString() },
+    last_fed: { type: String, default: new Date().toISOString() },
+    last_played: { type: String, default: new Date().toISOString() },
+    last_study: { type: String, default: new Date().toISOString() },
   },
 });
 
