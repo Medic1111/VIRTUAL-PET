@@ -1,0 +1,48 @@
+
+###
+
+# REGISTER
+
+POST http://localhost:3002/api/v1/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "medic121@medic.com",
+  "username": "medic11211",
+  "password": "password"
+}
+
+### 
+
+# LOGIN SUCCESS
+
+POST http://localhost:3002/api/v1/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "medic111111",
+  "password": "password"
+}
+
+### 
+
+# LOGIN FAIL
+
+POST http://localhost:3002/api/v1/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "med12@mic.com",
+  "username": "medi1nonon1",
+  "password": "111111"
+}
+
+
+
+
+### 
+
+# VALIDATE TOKEN
+
+GET http://localhost:3002/api/v1/validate
+Authorization: eyJhbGciOiJIUzI1IsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lZGljMTExMTExIiwiaWF0IjoxNjY5MTQxMzI2LCJleHAiOjE2NjkxNDE5MjZ9.2YRkSO_UqotFD2VlmG_H3iQNd_DgJUUNF0KfYw-p974
