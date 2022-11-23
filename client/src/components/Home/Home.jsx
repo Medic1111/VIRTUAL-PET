@@ -1,25 +1,37 @@
-import { useState } from "react";
-import LoginForm from "../LoginForm/LoginForm";
-import "./Home.css";
-import KiwiImg from "../../assets/imgs/kiwi1.jpg";
-import axios from "axios";
-
-// registration {email, username, password}
-// .post("/api/v1/register", data) for register
+import { useState } from 'react';
+import LoginForm from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
+import './Home.css';
+import KiwiImg from '../../assets/imgs/kiwi1.jpg';
+import axios from 'axios';
 
 const loginDefaultForm = {
-  username: "",
-  password: "",
+  username: '',
+  password: '',
 };
+
+const registerDefaultForm = {
+  username: '',
+  password: '',
+  email: '',
+};
+
 const Home = () => {
-  const [loginFormData, setloginFormData] = useState(loginDefaultForm);
+  const [loginFormData, setLoginFormData] = useState(loginDefaultForm);
+  const [registerFormData, setRegisterFormData] = useState(registerDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
-  const showBackButton = showLoginForm !== showRegisterForm;
 
   const handleLoginSubmit = async () => {
     await axios
-      .post("/api/v1/login", loginFormData)
+      .post('/api/v1/login', loginFormData)
+      .then((serverRes) => console.log(serverRes))
+      .catch((error) => console.log(error));
+  };
+
+  const handleRegisterSubmit = async () => {
+    await axios
+      .post('/api/v1/register', registerFormData)
       .then((serverRes) => console.log(serverRes))
       .catch((error) => console.log(error));
   };
@@ -37,7 +49,7 @@ const Home = () => {
       setShowRegisterForm(true);
       return;
     }
-    // handleRegisterSubmit();
+    handleRegisterSubmit();
   };
 
   const handleBackButton = () => {
@@ -48,7 +60,12 @@ const Home = () => {
     setShowRegisterForm(false);
   };
 
-  let buttonAnimation = showLoginForm ? " button-login-animation" : "";
+  const showBackButton = showLoginForm !== showRegisterForm;
+
+  let buttonLoginAnimation = showLoginForm ? ' button-login-animation' : '';
+  let buttonRegisterAnimation = showRegisterForm
+    ? ' button-register-animation'
+    : '';
 
   return (
     <div className="home--container">
@@ -61,10 +78,22 @@ const Home = () => {
         {showLoginForm && (
           <LoginForm
             loginFormData={loginFormData}
-            setloginFormData={setloginFormData}
+            setLoginFormData={setLoginFormData}
           />
         )}
-        <div className={"home-button--wrapper" + buttonAnimation}>
+        {showRegisterForm && (
+          <RegisterForm
+            registerFormData={registerFormData}
+            setRegisterFormData={setRegisterFormData}
+          />
+        )}
+        <div
+          className={
+            'home-button--wrapper' +
+            buttonLoginAnimation +
+            buttonRegisterAnimation
+          }
+        >
           {!showRegisterForm && (
             <button className="button button-base" onClick={handleLogin}>
               Login

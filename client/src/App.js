@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useEffect } from "react";
-import Home from "./components/Home/Home";
+import axios from 'axios';
+import { useEffect } from 'react';
+import Home from './components/Home/Home';
 
 function App() {
   return (
