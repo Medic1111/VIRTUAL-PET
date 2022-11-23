@@ -2,15 +2,33 @@ import { useState } from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import "./Home.css";
 import KiwiImg from "../../assets/imgs/kiwi1.jpg";
+import axios from "axios";
 
+// registration {email, username, password}
+// .post("/api/v1/register", data) for register
+
+const loginDefaultForm = {
+  username: "",
+  password: "",
+};
 const Home = () => {
+  const [loginFormData, setloginFormData] = useState(loginDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
-  let buttonAnimation = showLoginForm ? " button-login-animation" : "";
+  const handleLoginSubmit = async () => {
+    await axios
+      .post("/api/v1/login", loginFormData)
+      .then((serverRes) => console.log(serverRes))
+      .catch((error) => console.log(error));
+  };
+
   const handleLogin = () => {
     if (!showLoginForm) {
       setShowLoginForm(true);
     }
+    handleLoginSubmit();
   };
+
+  let buttonAnimation = showLoginForm ? " button-login-animation" : "";
 
   return (
     <div className="home--container">
@@ -19,8 +37,13 @@ const Home = () => {
       </div>
       <div className="home-hero--wrapper">
         <h1>Virtual Kiwi!</h1>
-        <p class="desc">Welcome to your personal kiwi!</p>
-        {showLoginForm && <LoginForm />}
+        <p className="desc">Welcome to your personal kiwi!</p>
+        {showLoginForm && (
+          <LoginForm
+            loginFormData={loginFormData}
+            setloginFormData={setloginFormData}
+          />
+        )}
         <div className={"home-button--wrapper" + buttonAnimation}>
           <button className="button button-base" onClick={handleLogin}>
             Login
