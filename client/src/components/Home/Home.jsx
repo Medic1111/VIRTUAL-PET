@@ -14,6 +14,9 @@ const loginDefaultForm = {
 const Home = () => {
   const [loginFormData, setloginFormData] = useState(loginDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const showBackButton = showLoginForm !== showRegisterForm;
+
   const handleLoginSubmit = async () => {
     await axios
       .post("/api/v1/login", loginFormData)
@@ -24,8 +27,25 @@ const Home = () => {
   const handleLogin = () => {
     if (!showLoginForm) {
       setShowLoginForm(true);
+      return;
     }
     handleLoginSubmit();
+  };
+
+  const handleRegister = () => {
+    if (!showRegisterForm) {
+      setShowRegisterForm(true);
+      return;
+    }
+    // handleRegisterSubmit();
+  };
+
+  const handleBackButton = () => {
+    if (showLoginForm) {
+      setShowLoginForm(false);
+      return;
+    }
+    setShowRegisterForm(false);
   };
 
   let buttonAnimation = showLoginForm ? " button-login-animation" : "";
@@ -33,7 +53,7 @@ const Home = () => {
   return (
     <div className="home--container">
       <div className="home-hero-img--wrapper">
-        <img src={KiwiImg} alt="cute brown bird" class="kiwiIMG" />
+        <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
       </div>
       <div className="home-hero--wrapper">
         <h1>Virtual Kiwi!</h1>
@@ -45,19 +65,23 @@ const Home = () => {
           />
         )}
         <div className={"home-button--wrapper" + buttonAnimation}>
-          <button className="button button-base" onClick={handleLogin}>
-            Login
-          </button>
-          {showLoginForm && (
+          {!showRegisterForm && (
+            <button className="button button-base" onClick={handleLogin}>
+              Login
+            </button>
+          )}
+          {showBackButton && (
             <button
               className="button button-inverted"
-              onClick={() => setShowLoginForm(false)}
+              onClick={handleBackButton}
             >
               Back
             </button>
           )}
           {!showLoginForm && (
-            <button className="button button-inverted">Register</button>
+            <button className="button button-inverted" onClick={handleRegister}>
+              Register
+            </button>
           )}
         </div>
       </div>

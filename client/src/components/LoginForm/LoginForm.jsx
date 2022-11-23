@@ -4,7 +4,6 @@ const LoginForm = ({ loginFormData, setloginFormData }) => {
   const handleInputData = (event) => {
     const { name, value } = event.target;
     setloginFormData({ ...loginFormData, [name]: value });
-    console.log(loginFormData);
   };
 
   return (
