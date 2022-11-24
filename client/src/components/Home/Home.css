@@ -42,9 +42,15 @@ h1 {
   transform: translateY(10rem);
   transition: all 0.2s;
 }
+
 .button-login-animation {
   transform: translateY(15rem);
 }
+
+.button-register-animation {
+  transform: translateY(18rem);
+}
+
 
 .desc {
   font-size: 2rem;
