@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import LoginForm from '../LoginForm/LoginForm';
-import RegisterForm from '../RegisterForm/RegisterForm';
-import './Home.css';
-import KiwiImg from '../../assets/imgs/kiwi1.jpg';
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
+import "./Home.css";
+import KiwiImg from "../../assets/imgs/kiwi1.jpg";
+import LoginForm from "../LoginForm/LoginForm";
+import RegisterForm from "../RegisterForm/RegisterForm";
+import { storeToken } from "../../utils/UserValidation";
 
 const loginDefaultForm = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
 };
 
 const registerDefaultForm = {
-  username: '',
-  password: '',
-  email: '',
+  username: "",
+  password: "",
+  email: "",
 };
 
 const Home = () => {
@@ -24,15 +25,15 @@ const Home = () => {
 
   const handleLoginSubmit = async () => {
     await axios
-      .post('/api/v1/login', loginFormData)
-      .then((serverRes) => console.log(serverRes))
+      .post("/api/v1/login", loginFormData)
+      .then((serverRes) => storeToken(serverRes))
       .catch((error) => console.log(error));
   };
 
   const handleRegisterSubmit = async () => {
     await axios
-      .post('/api/v1/register', registerFormData)
-      .then((serverRes) => console.log(serverRes))
+      .post("/api/v1/register", registerFormData)
+      .then((serverRes) => storeToken(serverRes))
       .catch((error) => console.log(error));
   };
 
@@ -62,10 +63,10 @@ const Home = () => {
 
   const showBackButton = showLoginForm !== showRegisterForm;
 
-  let buttonLoginAnimation = showLoginForm ? ' button-login-animation' : '';
+  let buttonLoginAnimation = showLoginForm ? " button-login-animation" : "";
   let buttonRegisterAnimation = showRegisterForm
-    ? ' button-register-animation'
-    : '';
+    ? " button-register-animation"
+    : "";
 
   return (
     <div className="home--container">
@@ -89,7 +90,7 @@ const Home = () => {
         )}
         <div
           className={
-            'home-button--wrapper' +
+            "home-button--wrapper" +
             buttonLoginAnimation +
             buttonRegisterAnimation
           }

@@ -20,8 +20,8 @@ POST http://localhost:3002/api/v1/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "medic11",
-  "password": "password"
+  "username": "medic1111",
+  "password": "testing"
 }
 
 ### 
@@ -42,7 +42,7 @@ Content-Type: application/json
 # VALIDATE TOKEN
 
 GET http://localhost:3002/api/v1/validate
-Authorization: eyJhbGciOiJIUzI1IsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lZGljMTExMTExIiwiaWF0IjoxNjY5MTQxMzI2LCJleHAiOjE2NjkxNDE5MjZ9.2YRkSO_UqotFD2VlmG_H3iQNd_DgJUUNF0KfYw-p974
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lZGljMTExMSIsImlhdCI6MTY2OTMxMzE4OSwiZXhwIjoxNjY5MzEzNzg5fQ.2rXcIsAokTFpGnQAAY36OThSPoPp1-pOIs8_w0fQ0Bg
 
 ###
 
@@ -87,5 +87,13 @@ Content-Type: application/json
 {
   "username": "medic1111"
 }
+
+###
+
+
+# REFETCH USER
+
+GET http://localhost:3002/api/v1/medic1111/validate
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lZGljMTExMSIsImlhdCI6MTY2OTMxNDM3NiwiZXhwIjoxNjY5MzE0OTc2fQ.DJFOYEGoJZV5Ik-esoA3XXvj6LZpOr7odn1IeUH8pkk
 
 ###

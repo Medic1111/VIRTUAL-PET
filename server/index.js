@@ -19,12 +19,14 @@ db_connection();
 const validate = require("./routes/validate");
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
+const refetchRoute = require("./routes/refetch");
 const { User } = require("./models/models");
 
 // PERSONAL MIDDLEWARES
 app.use("/", validate);
 app.use("/", loginRoute);
 app.use("/", registerRoute);
+app.use("/", refetchRoute);
 
 // DEV ROUTE
 
