@@ -5,6 +5,7 @@ import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { storeToken } from "../../utils/UserValidation";
+
 const loginDefaultForm = {
   username: "",
   password: "",
@@ -24,16 +25,13 @@ const Home = () => {
 
   const handleLoginSubmit = async () => {
     await axios
-      .post("/api/v1/login", loginFormData)
-      .then((serverRes) => console.log(serverRes))
-      .catch((error) => console.log(error));
+      .post("/api/v1/login", loginFormData).then((serverRes) => storeToken(serverRes)).catch((error) => console.log(error));
   };
 
   const handleRegisterSubmit = async () => {
     await axios
       .post("/api/v1/register", registerFormData)
-      .then((serverRes) => storeToken(serverRes))
-      .catch((error) => storeToken(error));
+      .then((serverRes) => storeToken(serverRes)).catch((error) => console.log(error));
   };
 
   const handleLogin = () => {
