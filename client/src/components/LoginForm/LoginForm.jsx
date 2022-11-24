@@ -1,9 +1,9 @@
-import "./LoginForm.css";
+import './LoginForm.css';
 
-const LoginForm = ({ loginFormData, setloginFormData }) => {
+const LoginForm = ({ loginFormData, setLoginFormData }) => {
   const handleInputData = (event) => {
     const { name, value } = event.target;
-    setloginFormData({ ...loginFormData, [name]: value });
+    setLoginFormData({ ...loginFormData, [name]: value });
   };
 
   return (
@@ -13,17 +13,16 @@ const LoginForm = ({ loginFormData, setloginFormData }) => {
         type="text"
         name="username"
         placeholder="Username"
-        onChange={handleInputData}
         value={loginFormData.username}
+        onChange={handleInputData}
       />
       <input
         className="form-input"
         type="password"
         name="password"
+        placeholder="Password"
         value={loginFormData.password}
         onChange={handleInputData}
-        placeholder="Password"
-        required
       />
     </form>
   );
