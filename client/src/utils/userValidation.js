@@ -4,7 +4,7 @@ export const storeToken = (serverRes) => {
   localStorage.setItem(
     "userValidation",
     JSON.stringify({
-      username: serverRes.data.user,
+      username: serverRes.data.username,
       token,
       expiration: myExp.toISOString(),
     })
