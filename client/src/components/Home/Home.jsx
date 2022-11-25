@@ -25,16 +25,13 @@ const Home = () => {
 
   const handleLoginSubmit = async () => {
     await axios
-      .post("/api/v1/login", loginFormData)
-      .then((serverRes) => storeToken(serverRes))
-      .catch((error) => console.log(error));
+      .post("/api/v1/login", loginFormData).then((serverRes) => storeToken(serverRes)).catch((error) => console.log(error));
   };
 
   const handleRegisterSubmit = async () => {
     await axios
       .post("/api/v1/register", registerFormData)
-      .then((serverRes) => storeToken(serverRes))
-      .catch((error) => console.log(error));
+      .then((serverRes) => storeToken(serverRes)).catch((error) => console.log(error));
   };
 
   const handleLogin = () => {
