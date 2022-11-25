@@ -4,7 +4,8 @@ import "./Home.css";
 import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
-import { storeToken } from "../../utils/UserValidation";
+import { storeToken } from "../../utils/userValidation";
+
 const loginDefaultForm = {
   username: "",
   password: "",
@@ -16,24 +17,20 @@ const registerDefaultForm = {
   email: "",
 };
 
-const Home = () => {
+const Home = ({ setIsLogin }) => {
   const [loginFormData, setLoginFormData] = useState(loginDefaultForm);
   const [registerFormData, setRegisterFormData] = useState(registerDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
-  const handleLoginSubmit = async () => {
+  const handleSubmit = async (parameter, data) => {
     await axios
-      .post("/api/v1/login", loginFormData)
-      .then((serverRes) => console.log(serverRes))
+      .post(`/api/v1/${parameter}`, data)
+      .then((serverRes) => {
+        storeToken(serverRes);
+        setIsLogin(true);
+      })
       .catch((error) => console.log(error));
-  };
-
-  const handleRegisterSubmit = async () => {
-    await axios
-      .post("/api/v1/register", registerFormData)
-      .then((serverRes) => storeToken(serverRes))
-      .catch((error) => storeToken(error));
   };
 
   const handleLogin = () => {
@@ -41,7 +38,7 @@ const Home = () => {
       setShowLoginForm(true);
       return;
     }
-    handleLoginSubmit();
+    handleSubmit("login", loginFormData);
   };
 
   const handleRegister = () => {
@@ -49,7 +46,7 @@ const Home = () => {
       setShowRegisterForm(true);
       return;
     }
-    handleRegisterSubmit();
+    handleSubmit("register", registerFormData);
   };
 
   const handleBackButton = () => {
