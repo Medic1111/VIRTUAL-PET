@@ -30,19 +30,24 @@ function App() {
               });
               return setIsAuth(true);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+              console.log(err);
+              return setIsAuth(false);
+            });
         }
-        return;
       }
-      return setIsAuth(false);
     };
     isTokenExp();
   }, [, isLogin]);
 
   return (
     <div className="App">
-      <Home setIsLogin={setIsLogin} />
-      {isAuth && <h1>Kiwi</h1>}
+      {/* <Home setIsLogin={setIsLogin} /> */}
+      {isAuth ? (
+        <h1>Kiwi</h1>
+      ) : (
+        <Home setIsLogin={setIsLogin} setIsAuth={setIsAuth} />
+      )}
     </div>
   );
 }

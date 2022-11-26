@@ -16,7 +16,7 @@ const registerDefaultForm = {
   email: "",
 };
 
-const Home = ({ setIsLogin }) => {
+const Home = ({ setIsLogin, setIsAuth }) => {
   const [loginFormData, setLoginFormData] = useState(loginDefaultForm);
   const [registerFormData, setRegisterFormData] = useState(registerDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -25,14 +25,22 @@ const Home = ({ setIsLogin }) => {
   const handleSubmit = async (parameter, data) => {
     await axios
       .post("/api/v1/login", loginFormData)
-      .then((serverRes) => console.log(serverRes))
-      .catch((error) => console.log(error));
+      .then((serverRes) => {
+        setIsAuth(true);
+        console.log(serverRes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleRegisterSubmit = async () => {
     await axios
       .post("/api/v1/register", registerFormData)
-      .then((serverRes) => console.log(serverRes))
+      .then((serverRes) => {
+        setIsAuth(true);
+        console.log(serverRes);
+      })
       .catch((error) => console.log(error));
   };
 
