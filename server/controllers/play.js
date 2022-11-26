@@ -1,0 +1,21 @@
+const { User } = require("../models/models");
+
+const playControl = async (req, res) => {
+  let { username } = req.body;
+  await User.findOne({ username: username })
+    .then((user) => {
+      let update = (user.pet.happy_level += 10);
+      user.pet.last_played = new Date().toISOString();
+      user.pet.happy_level = update;
+      user.pet.last_cared = new Date().toISOString();
+      user.save();
+      res.json({ message: "Kiwi played" });
+    })
+    .catch((err) =>
+      res
+        .status(500)
+        .json({ message: "Oops, something went wrong, try again." })
+    );
+};
+
+module.exports = { playControl };

@@ -93,7 +93,15 @@ Content-Type: application/json
 
 # REFETCH USER
 
-GET http://localhost:3002/api/v1/medic1111/validate
+GET http://localhost:3002/api/v1/medic1111/validate HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lZGljMTExMSIsImlhdCI6MTY2OTMxNDM3NiwiZXhwIjoxNjY5MzE0OTc2fQ.DJFOYEGoJZV5Ik-esoA3XXvj6LZpOr7odn1IeUH8pkk
 
 ###
+
+PATCH http://localhost:3002/api/v1/pet/drop HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "medic1111",
+  "stat": "1"
+}
