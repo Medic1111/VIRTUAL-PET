@@ -25,6 +25,7 @@ const feedRoute = require("./routes/feed");
 const playRoute = require("./routes/play");
 const studyRoute = require("./routes/study");
 const dropRoute = require("./routes/drop");
+const healthRoute = require("./routes/health");
 
 // PERSONAL MIDDLEWARES
 app.use("/", validate);
@@ -36,6 +37,7 @@ app.use("/", feedRoute);
 app.use("/", playRoute);
 app.use("/", studyRoute);
 app.use("/", dropRoute);
+app.use("/", healthRoute);
 
 // DEV ROUTE
 

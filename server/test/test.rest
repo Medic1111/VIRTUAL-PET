@@ -7,9 +7,9 @@ POST http://localhost:3002/api/v1/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "email@gmail.com",
-  "username": "testharris",
-  "password": "password1"
+  "email": "medic1111@medic.com",
+  "username": "medic111111",
+  "password": "testing"
 }
 
 ### 
@@ -20,7 +20,7 @@ POST http://localhost:3002/api/v1/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "medic1111",
+  "username": "medic111111",
   "password": "testing"
 }
 
@@ -60,6 +60,17 @@ Content-Type: application/json
 # Feed
 
 PATCH http://localhost:3002/api/v1/pet/feed HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "medic1111"
+}
+
+###
+
+# Health
+
+PATCH http://localhost:3002/api/v1/pet/vet HTTP/1.1
 Content-Type: application/json
 
 {
