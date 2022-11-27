@@ -7,6 +7,7 @@ import YoungKiwi from '../../assets/imgs/young-kiwi.png';
 import AdultKiwi from '../../assets/imgs/young-kiwi.png';
 import OldKiwi from '../../assets/imgs/young-kiwi.png';
 import DeadKiwi from '../../assets/imgs/kiwi-dead.png';
+import SpeechBubble from '../../assets/imgs/speech-bubble.svg';
 import axios from 'axios';
 
 const Main = ({ currentUser }) => {
@@ -18,7 +19,71 @@ const Main = ({ currentUser }) => {
   const [study, setStudy] = useState(smart_level);
   const [health, setHealth] = useState(health_level);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const { last_cared } = pet;
+    const getDiff = (older) => {
+      let reqBody = { stat: '' };
+      const msDiff = Math.abs(
+        new Date(older) - new Date(new Date().toISOString())
+      );
+      const hrsNotCared = msDiff / (60 * 60 * 1000);
+
+      if (hrsNotCared >= 24) {
+        console.log('Kiwi Died');
+        return (reqBody.stat = 'died');
+      } else if (hrsNotCared < 12 && hrsNotCared >= 6) {
+        console.log('dropping stat by a lot');
+        return (reqBody.stat = 5);
+      } else if (hrsNotCared < 6 && hrsNotCared >= 3) {
+        console.log('dropping stat by medium');
+        return (reqBody.stat = 3);
+      } else if (hrsNotCared < 3 && hrsNotCared >= 1) {
+        console.log('dropping stat by almost nothing');
+        return (reqBody.stat = 1);
+      } else {
+        console.log('Taking good care within the hour');
+      }
+      return reqBody;
+    };
+
+    const stat = getDiff(last_cared);
+    const setDiff = async (stat) => {
+      if (stat === 5 || stat === 3 || stat === 1) {
+        await axios
+          .patch('/api/v1/pet/drop', {
+            username,
+            stat,
+          })
+          .then((serverRes) => {
+            setFeed((feed) => feed - 10 * stat);
+            setPlay((play) => play - 10 * stat);
+            setStudy((study) => study - 10 * stat);
+            setHealth((health) => health - 10 * stat);
+            console.log(serverRes);
+          })
+          .catch((err) => console.log(err));
+      }
+      return;
+    };
+    setDiff(stat);
+  }, []);
+
+  const kiwiImage = () => {
+    if (level === 0) {
+      return Egg;
+    } else if (level === 1) {
+      return BabyKiwi;
+    } else if (level === 2) {
+      return YoungKiwi;
+    } else if (level === 3) {
+      return AdultKiwi;
+    } else if (level > 3) {
+      return OldKiwi;
+    }
+  };
+
+  const kiwiImageSrc = kiwiImage();
+
   const handleFeed = async () => {
     await axios
       .patch('/api/v1/pet/feed', { username })
@@ -56,13 +121,16 @@ const Main = ({ currentUser }) => {
       <div className="home-hero-img--wrapper">
         <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
       </div>
+      <div className="speech-bubble">
+        <img src={SpeechBubble} alt="text-bubble" className="kiwiIMG" />
+      </div>
       <div className="home-hero--wrapper">
         <div className="header-kiwi-box">
           <h1 className="header-kiwi">Virtual Kiwi!</h1>
           <p className="desc header-kiwi">Welcome to your personal kiwi!</p>
         </div>
         <div className="pet-box">
-          <img src={Egg} alt="its an egg" className="egg" />
+          <img src={kiwiImageSrc} alt="its an egg" className="egg" />
         </div>
         <div className="stats--container">
           <div className="stats--wrapper">

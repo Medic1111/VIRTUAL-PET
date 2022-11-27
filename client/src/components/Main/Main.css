@@ -46,6 +46,7 @@
   h1 {
     font-size: 7.2rem;
     padding-bottom: 0;
+    
   }
   
   .desc {
@@ -55,8 +56,8 @@
   }
   
   .pet-box {
-    width: 40vh;
-    height: 40vh;
+    min-width: 40vh;
+    min-height: 40vh;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -91,8 +92,20 @@
 
 .btn-kiwi {
     background-color: #604623;
-    width: 4vw;
-    height: 3vh;
+    min-width: 4vw;
+    min-height: 3vh;
     font-family: 'Kaushan Script', cursive;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+    padding-top: 0;
+}
+
+.speech-bubble {
+  position: absolute;
+  top: 2rem;;
+  left: 50rem;
+  width: 10rem; 
+  height: 15rem;   
+  display: flex;
+  font-weight: 800;
+  color: black;
 }
