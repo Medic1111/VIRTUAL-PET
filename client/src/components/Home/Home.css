@@ -29,7 +29,6 @@
 
 h1 {
   font-size: 7.2rem;
-  font-family: "Indie Flower", cursive, sans-serif;
   padding-bottom: 0;
 }
 
@@ -55,7 +54,6 @@ h1 {
 .desc {
   font-size: 2rem;
   text-align: center;
-  font-family: "Indie Flower", cursive, sans-serif;
   transform: translateY(-1.5rem);
 }
 
