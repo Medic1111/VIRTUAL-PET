@@ -1,22 +1,22 @@
-import { useState } from "react";
-import LoginForm from "../LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
-import "./Home.css";
-import KiwiImg from "../../assets/imgs/kiwi1.jpg";
-import axios from "axios";
+import { useState } from 'react';
+import LoginForm from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
+import './Home.css';
+import KiwiImg from '../../assets/imgs/kiwi1.jpg';
+import axios from 'axios';
 
 const loginDefaultForm = {
-  username: "",
-  password: "",
+  username: '',
+  password: '',
 };
 
 const registerDefaultForm = {
-  username: "",
-  password: "",
-  email: "",
+  username: '',
+  password: '',
+  email: '',
 };
 
-const Home = ({ setIsLogin }) => {
+const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
   const [loginFormData, setLoginFormData] = useState(loginDefaultForm);
   const [registerFormData, setRegisterFormData] = useState(registerDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -24,16 +24,15 @@ const Home = ({ setIsLogin }) => {
 
   const handleSubmit = async (parameter, data) => {
     await axios
-      .post("/api/v1/login", loginFormData)
-      .then((serverRes) => console.log(serverRes))
-      .catch((error) => console.log(error));
-  };
-
-  const handleRegisterSubmit = async () => {
-    await axios
-      .post("/api/v1/register", registerFormData)
-      .then((serverRes) => console.log(serverRes))
-      .catch((error) => console.log(error));
+      .post(`/api/v1/${parameter}`, data)
+      .then((serverRes) => {
+        setCurrentUser(serverRes.data);
+        setIsAuth(true);
+        console.log(serverRes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleLogin = () => {
@@ -41,7 +40,7 @@ const Home = ({ setIsLogin }) => {
       setShowLoginForm(true);
       return;
     }
-    handleSubmit("login", loginFormData);
+    handleSubmit('login', loginFormData);
   };
 
   const handleRegister = () => {
@@ -49,7 +48,7 @@ const Home = ({ setIsLogin }) => {
       setShowRegisterForm(true);
       return;
     }
-    handleSubmit("register", registerFormData);
+    handleSubmit('register', registerFormData);
   };
 
   const handleBackButton = () => {
@@ -62,10 +61,10 @@ const Home = ({ setIsLogin }) => {
 
   const showBackButton = showLoginForm !== showRegisterForm;
 
-  let buttonLoginAnimation = showLoginForm ? " button-login-animation" : "";
+  let buttonLoginAnimation = showLoginForm ? ' button-login-animation' : '';
   let buttonRegisterAnimation = showRegisterForm
-    ? " button-register-animation"
-    : "";
+    ? ' button-register-animation'
+    : '';
 
   return (
     <div className="home--container">
@@ -89,7 +88,7 @@ const Home = ({ setIsLogin }) => {
         )}
         <div
           className={
-            "home-button--wrapper" +
+            'home-button--wrapper' +
             buttonLoginAnimation +
             buttonRegisterAnimation
           }
