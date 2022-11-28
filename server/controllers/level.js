@@ -7,7 +7,7 @@ const levelControl = async (req, res) => {
       let update = (user.pet.level += 1);
       user.pet.level = update;
       user.save();
-      res.json({ message: "Level Up" });
+      res.status(200).json({ message: "Level Up" });
     })
     .catch((err) =>
       res
