@@ -1,9 +1,9 @@
 .home--container {
   height: 100vh;
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
   padding-bottom: 10rem;
-  width: 70%;
+  transform: translateX(-10%);
 }
 
 .home-hero--wrapper {
@@ -13,18 +13,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateX(-6.4rem);
 }
 
 .home-hero-img--wrapper {
   align-self: center;
   justify-self: flex-end;
-  transform: translateX(2.4rem);
+  transform: translateX(5rem) !important;
 }
 
 .kiwiIMG {
-  width: 600px;
-  height: 400px;
+  width: 60rem;
+  height: 40rem;
+}
+
+@media (max-width: 700px) {
+  .home--container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .kiwiIMG {
+    scale: 0.7;
+  }
 }
 
 h1 {
@@ -49,7 +59,6 @@ h1 {
 .button-register-animation {
   transform: translateY(19rem);
 }
-
 
 .desc {
   font-size: 2rem;
