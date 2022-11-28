@@ -19,6 +19,11 @@ const Main = ({ currentUser }) => {
   const [study, setStudy] = useState(smart_level);
   const [health, setHealth] = useState(health_level);
 
+  const [actionClicked, setActionClicked] = useState(false);
+
+  const [kiwiImage, setKiwiImage] = useState('');
+  const [kiwiMessage, setKiwiMessage] = useState('');
+
   useEffect(() => {
     const { last_cared } = pet;
     const getDiff = (older) => {
@@ -28,10 +33,23 @@ const Main = ({ currentUser }) => {
       );
       const hrsNotCared = msDiff / (60 * 60 * 1000);
 
-      if (hrsNotCared >= 24) {
-        console.log('Kiwi Died');
-        return (reqBody.stat = 'died');
-      } else if (hrsNotCared < 12 && hrsNotCared >= 6) {
+      setKiwiImage(() => {
+        if (level === 0) {
+          return Egg;
+        } else if (level === 1) {
+          return BabyKiwi;
+        } else if (level === 2) {
+          return YoungKiwi;
+        } else if (level === 3) {
+          return AdultKiwi;
+        } else if (level > 3) {
+          return OldKiwi;
+        } else if (hrsNotCared >= 24) {
+          return DeadKiwi;
+        }
+      });
+
+      if (hrsNotCared < 12 && hrsNotCared >= 6) {
         console.log('dropping stat by a lot');
         return (reqBody.stat = 5);
       } else if (hrsNotCared < 6 && hrsNotCared >= 3) {
@@ -68,69 +86,54 @@ const Main = ({ currentUser }) => {
     setDiff(stat);
   }, []);
 
-  const kiwiImage = () => {
-    if (level === 0) {
-      return Egg;
-    } else if (level === 1) {
-      return BabyKiwi;
-    } else if (level === 2) {
-      return YoungKiwi;
-    } else if (level === 3) {
-      return AdultKiwi;
-    } else if (level > 3) {
-      return OldKiwi;
-    }
+  const showBubbleSpeech = () => {
+    setActionClicked(true);
+    setTimeout(() => setActionClicked(false), 4000);
   };
 
-  const kiwiImageSrc = kiwiImage();
-
-  const handleFeed = async () => {
+  const handleAction = async (parameter, state, action) => {
     await axios
-      .patch('/api/v1/pet/feed', { username })
-      .then((serverRes) => console.log(serverRes.data))
+      .patch(`/api/v1/pet/${parameter}`, { username })
+      .then((serverRes) => {
+        setKiwiMessage(serverRes.data.message);
+        console.log(serverRes.data);
+      })
       .catch((err) => console.log(err));
-    setFeed((feed) => feed + 10);
+    action((state) => {
+      if (state + 10 > 100) {
+        return (state = 100);
+      }
+      return state + 10;
+    });
+    showBubbleSpeech();
   };
 
-  const handlePlay = async () => {
-    await axios
-      .patch('/api/v1/pet/play', { username })
-      .then((serverRes) => console.log(serverRes.data))
-      .catch((err) => console.log(err));
-    setPlay((play) => play + 10);
-  };
+  const handleFeed = () => handleAction('feed', feed, setFeed);
 
-  const handleStudy = async () => {
-    await axios
-      .patch('/api/v1/pet/study', { username })
-      .then((serverRes) => console.log(serverRes.data))
-      .catch((err) => console.log(err));
-    setStudy((study) => study + 10);
-  };
+  const handlePlay = () => handleAction('play', play, setPlay);
 
-  const handleHealth = async () => {
-    await axios
-      .patch('/api/v1/pet/vet', { username })
-      .then((serverRes) => console.log(serverRes.data))
-      .catch((err) => console.log(err));
-    setHealth((health) => health + 10);
-  };
+  const handleStudy = () => handleAction('study', study, setStudy);
+
+  const handleHealth = () => handleAction('vet', health, setHealth);
 
   return (
     <div className="home--container">
       <div className="home-hero-img--wrapper">
         <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
       </div>
-      <div className="speech-bubble">
-        <img src={SpeechBubble} alt="text-bubble" className="kiwiIMG" />
-      </div>
+      {actionClicked && (
+        <div className="speech-bubble">
+          <img src={SpeechBubble} alt="text-bubble" className="kiwiIMG" />
+          <p className="kiwiMessage">{kiwiMessage}</p>
+        </div>
+      )}
       <div className="home-hero--wrapper">
         <div className="header-kiwi-box">
           <h1 className="header-kiwi">Virtual Kiwi!</h1>
           <p className="desc header-kiwi">Welcome to your personal kiwi!</p>
         </div>
         <div className="pet-box">
-          <img src={kiwiImageSrc} alt="its an egg" className="egg" />
+          <img src={kiwiImage} alt="its an egg" className="egg" />
         </div>
         <div className="stats--container">
           <div className="stats--wrapper">

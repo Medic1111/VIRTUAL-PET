@@ -35,7 +35,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Home setIsLogin={setIsLogin} /> */}
       {isAuth ? (
         <Main currentUser={currentUser} />
       ) : (
