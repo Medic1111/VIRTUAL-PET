@@ -43,11 +43,11 @@ h1 {
 }
 
 .button-login-animation {
-  transform: translateY(15rem);
+  transform: translateY(16rem);
 }
 
 .button-register-animation {
-  transform: translateY(18rem);
+  transform: translateY(19rem);
 }
 
 
@@ -97,4 +97,10 @@ h1 {
 .button-inverted:active {
   background-color: #604623;
   color: #fff;
+}
+
+.error-message {
+  margin-top: -1rem;
+  color: red;
+  font-size: 1.4rem;
 }

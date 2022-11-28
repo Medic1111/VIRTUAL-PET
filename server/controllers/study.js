@@ -1,4 +1,4 @@
-const { User } = require("../models/models");
+const { User } = require('../models/models');
 
 const studyControl = async (req, res) => {
   let { username } = req.body;
@@ -9,12 +9,12 @@ const studyControl = async (req, res) => {
       user.pet.smart_level = update;
       user.pet.last_cared = new Date().toISOString();
       user.save();
-      res.json({ message: "Kiwi studied" });
+      res.json({ message: 'I learned something new!' });
     })
     .catch((err) =>
       res
         .status(500)
-        .json({ message: "Oops, something went wrong. Please try again." })
+        .json({ message: 'Oops, something went wrong. Please try again.' })
     );
 };
 

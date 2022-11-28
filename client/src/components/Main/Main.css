@@ -105,7 +105,18 @@
   left: 50rem;
   width: 10rem; 
   height: 15rem;   
+  z-index: 9;
   display: flex;
   font-weight: 800;
   color: black;
+}
+
+.kiwiMessage {
+  position: absolute;
+  z-index: 99;
+  font-size: 2rem;
+  text-align: center;
+  width: 25rem;
+  top: 7.5rem;
+  left: 1rem;
 }

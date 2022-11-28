@@ -21,6 +21,7 @@ const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
   const [registerFormData, setRegisterFormData] = useState(registerDefaultForm);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (parameter, data) => {
     await axios
@@ -32,6 +33,7 @@ const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage(error.response.data.message);
       });
   };
 
@@ -53,9 +55,11 @@ const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
 
   const handleBackButton = () => {
     if (showLoginForm) {
+      setErrorMessage('');
       setShowLoginForm(false);
       return;
     }
+    setErrorMessage('');
     setShowRegisterForm(false);
   };
 
@@ -112,6 +116,7 @@ const Home = ({ setIsLogin, setIsAuth, setCurrentUser }) => {
             </button>
           )}
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );
