@@ -29,7 +29,6 @@
 
 h1 {
   font-size: 7.2rem;
-  font-family: "Indie Flower", cursive, sans-serif;
   padding-bottom: 0;
 }
 
@@ -44,18 +43,17 @@ h1 {
 }
 
 .button-login-animation {
-  transform: translateY(15rem);
+  transform: translateY(16rem);
 }
 
 .button-register-animation {
-  transform: translateY(18rem);
+  transform: translateY(19rem);
 }
 
 
 .desc {
   font-size: 2rem;
   text-align: center;
-  font-family: "Indie Flower", cursive, sans-serif;
   transform: translateY(-1.5rem);
 }
 
@@ -99,4 +97,10 @@ h1 {
 .button-inverted:active {
   background-color: #604623;
   color: #fff;
+}
+
+.error-message {
+  margin-top: -1rem;
+  color: red;
+  font-size: 1.4rem;
 }
