@@ -10,7 +10,7 @@ import DeadKiwi from "../../assets/imgs/kiwi-dead.png";
 import SpeechBubble from "../../assets/imgs/speech-bubble.svg";
 import axios from "axios";
 
-const Main = ({ currentUser }) => {
+const Main = ({ currentUser, setCurrentUser }) => {
   const { pet, username } = currentUser;
   const { full_level, happy_level, health_level, smart_level, level } = pet;
 
@@ -75,10 +75,7 @@ const Main = ({ currentUser }) => {
             stat,
           })
           .then((serverRes) => {
-            setFeed((feed) => feed - 10 * stat);
-            setPlay((play) => play - 10 * stat);
-            setStudy((study) => study - 10 * stat);
-            setHealth((health) => health - 10 * stat);
+            setCurrentUser({ ...currentUser, pet: serverRes.data.pet });
             console.log(serverRes);
           })
           .catch((err) => console.log(err));

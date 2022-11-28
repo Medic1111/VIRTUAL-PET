@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Home from './components/Home/Home';
-import Main from './components/Main/Main';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Home from "./components/Home/Home";
+import Main from "./components/Main/Main";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -9,9 +9,9 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
     const isTokenExp = async () => {
-      const storedData = localStorage.getItem('userValidation');
+      const storedData = localStorage.getItem("userValidation");
 
-      if (typeof storedData === 'string') {
+      if (typeof storedData === "string") {
         const parse = JSON.parse(storedData);
 
         if (parse && new Date(parse.expiration) > new Date()) {
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       {isAuth ? (
-        <Main currentUser={currentUser} />
+        <Main currentUser={currentUser} setCurrentUser={setCurrentUser} />
       ) : (
         <Home
           setIsLogin={setIsLogin}
