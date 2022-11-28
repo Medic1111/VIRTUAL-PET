@@ -4,6 +4,8 @@ const studyControl = async (req, res) => {
   let { username } = req.body;
   await User.findOne({ username: username })
     .then((user) => {
+      if (user.pet.smart_level >= 100)
+        return res.json({ message: "Kiwi can't process anymore!!!" });
       let update = (user.pet.smart_level += 10);
       user.pet.last_study = new Date().toISOString();
       user.pet.smart_level = update;
