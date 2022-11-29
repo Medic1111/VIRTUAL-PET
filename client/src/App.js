@@ -6,7 +6,7 @@ import Main from "./components/Main/Main";
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isAuth, setIsAuth] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
     const isTokenExp = async () => {
       const storedData = localStorage.getItem("userValidation");
@@ -31,18 +31,18 @@ function App() {
       }
     };
     isTokenExp();
-  }, [, isLogin]);
+  }, []);
 
   return (
     <div className="App">
       {isAuth ? (
-        <Main currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      ) : (
-        <Home
-          setIsLogin={setIsLogin}
-          setIsAuth={setIsAuth}
+        <Main
+          currentUser={currentUser}
           setCurrentUser={setCurrentUser}
+          setIsAuth={setIsAuth}
         />
+      ) : (
+        <Home setIsAuth={setIsAuth} setCurrentUser={setCurrentUser} />
       )}
     </div>
   );
