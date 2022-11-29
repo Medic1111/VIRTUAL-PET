@@ -4,12 +4,6 @@
 
 ---
 
-## Inspired by:
-
-![img of tamagotchi toys (no rights)](/tamagotchi.png)
-
----
-
 ## The App:
 
 Kiwi is a bird that requires a lot of attention during his entire life-span, just like the real pet would. This app allows a registered user to care for and raise their own Kiwi, by feeding and playing, taking him to the vet occasionally, and of course helping him with homework. Kiwi grows every 24 hours, but its needs happen throughout the day and must be met otherwise kiwi passes.
