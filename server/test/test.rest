@@ -52,7 +52,7 @@ PATCH http://localhost:3002/api/v1/pet/level HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "medic1111"
+  "username": "adultkiwi"
 }
 
 ###
@@ -115,6 +115,6 @@ PATCH http://localhost:3002/api/v1/pet/drop HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "medic1111",
+  "username": "deadkiwi",
   "stat": "5"
 }
