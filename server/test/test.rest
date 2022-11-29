@@ -115,6 +115,6 @@ PATCH http://localhost:3002/api/v1/pet/drop HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "deadkiwi",
-  "stat": "5"
+  "username": "aaaaaa",
+  "stat": "1"
 }

@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   transform: translateX(-6.4rem);
+  gap: 1rem;
 }
 
 @media (max-width: 700px) {
@@ -67,11 +68,7 @@ h1 {
 .pet-actions-box {
   display: flex;
   gap: 2rem;
-  position: absolute;
-  bottom: 0;
-  transform: translateY(150%);
 }
-
 .stats--container {
   position: absolute;
   right: 0;
@@ -99,22 +96,17 @@ h1 {
 
 .speech-bubble {
   position: absolute;
-  top: 2rem;
-  left: 50rem;
-  width: 10rem;
-  height: 15rem;
-  z-index: 9;
-  display: flex;
+  z-index: 999;
   font-weight: 800;
   color: black;
+  transform: translate(15%, 25%);
 }
 
 .kiwiMessage {
   position: absolute;
-  z-index: 99;
   font-size: 2rem;
   text-align: center;
   width: 25rem;
   top: 7.5rem;
-  left: 1rem;
+  transform: translateX(25%);
 }
