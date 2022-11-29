@@ -84,7 +84,7 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
       return;
     };
     setDiff(stat);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAction = async (parameter, state, action) => {
     if (kiwiIsDead) return;

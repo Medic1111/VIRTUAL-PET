@@ -16,9 +16,11 @@
   html {
     font-size: 70%;
   }
+
   .home--container {
     transform: translateX(20%);
   }
+
   .home-hero--wrapper {
     margin-top: 2rem;
     transform: translateX(10%);
@@ -30,7 +32,7 @@
   text-align: center;
   min-width: 100vh;
   min-height: 60vh;
-  top: -40%;
+  top: -30%;
 }
 
 .kiwiIMG {
