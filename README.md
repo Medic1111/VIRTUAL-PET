@@ -1,12 +1,12 @@
 # VITUAL KIWI - Your personal virtual pet
 
-[img of the home page](home.png)
+![img of the home page](home.png)
 
 ---
 
 ## Inspired by:
 
-[img of tamagotchi toys (no rights)](/tamagotchi.png)
+![img of tamagotchi toys (no rights)](/tamagotchi.png)
 
 ---
 
@@ -16,10 +16,10 @@ Kiwi is a bird that requires a lot of attention during his entire life-span, jus
 
 ---
 
-[img of a bird's egg](egg.png)
-[img of a young chick](baby.png)
-[img of an adult bird with no feathers](adult.png)
-[img of a cemety stone saying rest in peace](dead.png)
+![img of a bird's egg](egg.png)
+![img of a young chick](baby.png)
+![img of an adult bird with no feathers](adult.png)
+![img of a cemety stone saying rest in peace](dead.png)
 
 ---
 
