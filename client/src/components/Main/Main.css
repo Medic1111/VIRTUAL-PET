@@ -73,3 +73,53 @@
   top: 7.5rem;
   transform: translateX(25%);
 }
+
+@media (max-width: 800px) {
+  .home__container {
+    width: 40vw;
+    margin: 0 auto;
+    transform: translate(0%, 0%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kiwi_img {
+    width: 50rem;
+    height: calc(100rem / 3);
+  }
+
+  .home_img__wrapper {
+    transform: translateX(0%);
+  }
+
+  .kiwi_img {
+    scale: 0.7;
+  }
+
+  .home_hero__container {
+    transform: translate(0%, -10%);
+  }
+
+  .speech_bubble {
+    rotate: 180deg;
+    transform: translate(20%, 100%);
+  }
+
+  .kiwi_message {
+    width: 10rem;
+    right: 50%;
+    rotate: 180deg;
+    transform: translate(0%, 0%);
+  }
+}
+
+@media (max-width: 700px) {
+  .kiwi_img {
+    width: 40rem;
+    height: calc(80rem / 3);
+  }
+  .kiwi_message {
+    transform: translate(0%, 25%);
+  }
+}
