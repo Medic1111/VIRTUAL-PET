@@ -20,10 +20,10 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   const [study, setStudy] = useState(smart_level);
   const [health, setHealth] = useState(health_level);
 
-  const [actionClicked, setActionClicked] = useState(false);
+  const [actionClicked, setActionClicked] = useState(true);
 
   const [kiwiImage, setKiwiImage] = useState("");
-  const [kiwiMessage, setKiwiMessage] = useState("");
+  const [kiwiMessage, setKiwiMessage] = useState("noo im hundryu..!!");
   const [kiwiIsDead, setKiwiIsDead] = useState(false);
 
   useEffect(() => {
@@ -118,70 +118,67 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   };
 
   return (
-    <div className="home--container">
-      <div className="home-hero-img--wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
+    <div className="home__container">
+      <div className="home_img__wrapper">
+        <img src={KiwiImg} alt="cute brown bird" className="kiwi_img" />
       </div>
       {actionClicked && (
-        <div className="speech-bubble">
-          <img src={SpeechBubble} alt="text-bubble" className="kiwiIMG" />
-          <p className="kiwiMessage">{kiwiMessage}</p>
+        <div className="speech_bubble">
+          <img src={SpeechBubble} alt="speech bubble" className="kiwi_img" />
+          <p className="kiwi_message">{kiwiMessage}</p>
         </div>
       )}
-      <div className="home-hero--wrapper">
-        <div className="header-kiwi-box">
-          <h1 className="header-kiwi">Virtual Kiwi!</h1>
-          <p className="desc header-kiwi">Welcome to your personal kiwi!</p>
+      <div className="home_hero__container">
+        <>
+          <h1>Virtual Kiwi!</h1>
+          <p className="hero_desc">Welcome to your personal kiwi!</p>
+        </>
+        <div className="pet_box">
+          <img src={kiwiImage} alt="draw of a kiwi" className="pet_img" />
         </div>
-        <div className="pet-box">
-          <img src={kiwiImage} alt="its an egg" className="egg" />
-        </div>
-        <div className="stats--container">
-          <div className="stats--wrapper">
+        <div className="stats__container">
+          <div className="stat__wrapper">
             <p>Health: {health}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div className="stat__wrapper">
             <p>Food: {feed}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div className="stat__wrapper">
             <p>Happy: {play}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div className="stat__wrapper">
             <p>Smart: {study}%</p>
           </div>
         </div>
         {!kiwiIsDead && (
-          <div className="pet-actions-box">
+          <div className="pet_actions_box">
             <button
               onClick={handleFeed}
-              className="button button-base button-action btn-kiwi"
+              className="button button_base button_action btn_kiwi"
             >
               Feed
             </button>
             <button
               onClick={handleHealth}
-              className="button button-base button-action btn-kiwi"
+              className="button button_base button_action btn_kiwi"
             >
               Vet
             </button>
             <button
               onClick={handlePlay}
-              className="button button-base button-action btn-kiwi"
+              className="button button_base button_action btn_kiwi"
             >
               Play
             </button>
             <button
               onClick={handleStudy}
-              className="button button-base button-action btn-kiwi"
+              className="button button_base button_action btn_kiwi"
             >
               Study
             </button>
           </div>
         )}
-        <button
-          onClick={handleLogout}
-          className="button button-base button-logout"
-        >
+        <button onClick={handleLogout} className="button button_base">
           Logout
         </button>
       </div>
