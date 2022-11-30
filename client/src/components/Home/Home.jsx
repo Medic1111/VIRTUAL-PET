@@ -1,10 +1,18 @@
 import { useState } from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
-import "./Home.css";
 import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 import axios from "axios";
 import { storeToken } from "../../utils/utils";
+import {
+  HomeContainer,
+  HomeHeader,
+  HomeImage,
+  HomeHeroContainer,
+  ButtonWrapper,
+  ButtonBase,
+  ButtonInverted,
+} from "./Home.styles";
 
 const loginDefaultForm = {
   username: "",
@@ -66,21 +74,16 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
 
   const showBackButton = showLoginForm !== showRegisterForm;
 
-  let buttonLoginAnimation = showLoginForm ? " button_login_animation" : "";
-  let buttonRegisterAnimation = showRegisterForm
-    ? " button_register_animation"
-    : "";
-
   return (
-    <div className="home__container">
-      <div className="home_img__wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwi_img" />
-      </div>
-      <div className="home_hero__container">
-        <div className="hero_header">
+    <HomeContainer>
+      <HomeImage>
+        <img src={KiwiImg} alt="cute brown bird" />
+      </HomeImage>
+      <HomeHeroContainer>
+        <HomeHeader>
           <h1>Virtual Kiwi!</h1>
-          <p className="hero_desc">Welcome to your personal kiwi!</p>
-        </div>
+          <p>Welcome to your personal kiwi!</p>
+        </HomeHeader>
         {showLoginForm && (
           <LoginForm
             loginFormData={loginFormData}
@@ -93,35 +96,23 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
             setRegisterFormData={setRegisterFormData}
           />
         )}
-        <div
-          className={
-            "home_button__wrapper" +
-            buttonLoginAnimation +
-            buttonRegisterAnimation
-          }
+        <ButtonWrapper
+          showLoginForm={showLoginForm}
+          showRegisterForm={showRegisterForm}
         >
-          {errorMessage && <p className="error_message">{errorMessage}</p>}
+          {errorMessage && <p>{errorMessage}</p>}
           {!showRegisterForm && (
-            <button className="button button_base" onClick={handleLogin}>
-              Login
-            </button>
+            <ButtonBase onClick={handleLogin}>Login</ButtonBase>
           )}
           {showBackButton && (
-            <button
-              className="button button_inverted"
-              onClick={handleBackButton}
-            >
-              Back
-            </button>
+            <ButtonInverted onClick={handleBackButton}>Back</ButtonInverted>
           )}
           {!showLoginForm && (
-            <button className="button button_inverted" onClick={handleRegister}>
-              Register
-            </button>
+            <ButtonInverted onClick={handleRegister}>Register</ButtonInverted>
           )}
-        </div>
-      </div>
-    </div>
+        </ButtonWrapper>
+      </HomeHeroContainer>
+    </HomeContainer>
   );
 };
 
