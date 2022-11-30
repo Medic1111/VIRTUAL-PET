@@ -1,10 +1,18 @@
 import { useState } from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
-import "./Home.css";
 import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 import axios from "axios";
 import { storeToken } from "../../utils/utils";
+import {
+  Container,
+  Header,
+  ImageWrapper,
+  HomeHeroContainer,
+  ButtonWrapper,
+  ButtonBase,
+  ButtonInverted,
+} from "./Home.styles";
 
 const loginDefaultForm = {
   username: "",
@@ -66,19 +74,16 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
 
   const showBackButton = showLoginForm !== showRegisterForm;
 
-  let buttonLoginAnimation = showLoginForm ? " button-login-animation" : "";
-  let buttonRegisterAnimation = showRegisterForm
-    ? " button-register-animation"
-    : "";
-
   return (
-    <div className="home--container">
-      <div className="home-hero-img--wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
-      </div>
-      <div className="home-hero--wrapper">
-        <h1>Virtual Kiwi!</h1>
-        <p className="desc">Welcome to your personal kiwi!</p>
+    <Container>
+      <ImageWrapper>
+        <img src={KiwiImg} alt="cute brown bird" />
+      </ImageWrapper>
+      <HomeHeroContainer>
+        <Header>
+          <h1>Virtual Kiwi!</h1>
+          <p>Welcome to your personal kiwi!</p>
+        </Header>
         {showLoginForm && (
           <LoginForm
             loginFormData={loginFormData}
@@ -91,35 +96,23 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
             setRegisterFormData={setRegisterFormData}
           />
         )}
-        <div
-          className={
-            "home-button--wrapper" +
-            buttonLoginAnimation +
-            buttonRegisterAnimation
-          }
+        <ButtonWrapper
+          showLoginForm={showLoginForm}
+          showRegisterForm={showRegisterForm}
         >
+          {errorMessage && <p>{errorMessage}</p>}
           {!showRegisterForm && (
-            <button className="button button-base" onClick={handleLogin}>
-              Login
-            </button>
+            <ButtonBase onClick={handleLogin}>Login</ButtonBase>
           )}
           {showBackButton && (
-            <button
-              className="button button-inverted"
-              onClick={handleBackButton}
-            >
-              Back
-            </button>
+            <ButtonInverted onClick={handleBackButton}>Back</ButtonInverted>
           )}
           {!showLoginForm && (
-            <button className="button button-inverted" onClick={handleRegister}>
-              Register
-            </button>
+            <ButtonInverted onClick={handleRegister}>Register</ButtonInverted>
           )}
-        </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
-    </div>
+        </ButtonWrapper>
+      </HomeHeroContainer>
+    </Container>
   );
 };
 
