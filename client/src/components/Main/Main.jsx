@@ -10,6 +10,20 @@ import DeadKiwi from "../../assets/imgs/kiwi-dead.png";
 import SpeechBubble from "../../assets/imgs/speech-bubble.svg";
 import axios from "axios";
 import { clearLocalStorage } from "../../utils/utils";
+import {
+  Container,
+  ImageWrapper,
+  ButtonBase,
+  Header,
+} from "../Home/Home.styles";
+import {
+  SpeechBubbleContainer,
+  MainContainer,
+  PetContainer,
+  PetActionsContainer,
+  PetActionButton,
+  StatsContainer,
+} from "./Main.styles";
 
 const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   const { pet, username } = currentUser;
@@ -118,71 +132,49 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   };
 
   return (
-    <div className="home__container">
-      <div className="home_img__wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwi_img" />
-      </div>
+    <Container>
+      <ImageWrapper>
+        <img src={KiwiImg} alt="cute brown bird" />
+      </ImageWrapper>
       {actionClicked && (
-        <div className="speech_bubble">
-          <img src={SpeechBubble} alt="speech bubble" className="kiwi_img" />
-          <p className="kiwi_message">{kiwiMessage}</p>
-        </div>
+        <SpeechBubbleContainer>
+          <p>{kiwiMessage}</p>
+          <img src={SpeechBubble} alt="speech bubble" />
+        </SpeechBubbleContainer>
       )}
-      <div className="home_hero__container">
-        <>
+      <MainContainer>
+        <Header>
           <h1>Virtual Kiwi!</h1>
-          <p className="hero_desc">Welcome to your personal kiwi!</p>
-        </>
-        <div className="pet_box">
-          <img src={kiwiImage} alt="draw of a kiwi" className="pet_img" />
-        </div>
-        <div className="stats__container">
-          <div className="stat__wrapper">
+          <p>Welcome to your personal kiwi!</p>
+        </Header>
+        <PetContainer>
+          <img src={kiwiImage} alt="draw of a kiwi" />
+        </PetContainer>
+        <StatsContainer>
+          <div>
             <p>Health: {health}%</p>
           </div>
-          <div className="stat__wrapper">
+          <div>
             <p>Food: {feed}%</p>
           </div>
-          <div className="stat__wrapper">
+          <div>
             <p>Happy: {play}%</p>
           </div>
-          <div className="stat__wrapper">
+          <div>
             <p>Smart: {study}%</p>
           </div>
-        </div>
+        </StatsContainer>
         {!kiwiIsDead && (
-          <div className="pet_actions_box">
-            <button
-              onClick={handleFeed}
-              className="button button_base button_action btn_kiwi"
-            >
-              Feed
-            </button>
-            <button
-              onClick={handleHealth}
-              className="button button_base button_action btn_kiwi"
-            >
-              Vet
-            </button>
-            <button
-              onClick={handlePlay}
-              className="button button_base button_action btn_kiwi"
-            >
-              Play
-            </button>
-            <button
-              onClick={handleStudy}
-              className="button button_base button_action btn_kiwi"
-            >
-              Study
-            </button>
-          </div>
+          <PetActionsContainer>
+            <PetActionButton onClick={handleFeed}>Feed</PetActionButton>
+            <PetActionButton onClick={handleHealth}>Vet</PetActionButton>
+            <PetActionButton onClick={handlePlay}>Play</PetActionButton>
+            <PetActionButton onClick={handleStudy}>Study</PetActionButton>
+          </PetActionsContainer>
         )}
-        <button onClick={handleLogout} className="button button_base">
-          Logout
-        </button>
-      </div>
-    </div>
+        <ButtonBase onClick={handleLogout}>Logout</ButtonBase>
+      </MainContainer>
+    </Container>
   );
 };
 

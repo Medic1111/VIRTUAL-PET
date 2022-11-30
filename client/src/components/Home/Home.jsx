@@ -5,9 +5,9 @@ import KiwiImg from "../../assets/imgs/kiwi1.jpg";
 import axios from "axios";
 import { storeToken } from "../../utils/utils";
 import {
-  HomeContainer,
-  HomeHeader,
-  HomeImage,
+  Container,
+  Header,
+  ImageWrapper,
   HomeHeroContainer,
   ButtonWrapper,
   ButtonBase,
@@ -75,15 +75,15 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
   const showBackButton = showLoginForm !== showRegisterForm;
 
   return (
-    <HomeContainer>
-      <HomeImage>
+    <Container>
+      <ImageWrapper>
         <img src={KiwiImg} alt="cute brown bird" />
-      </HomeImage>
+      </ImageWrapper>
       <HomeHeroContainer>
-        <HomeHeader>
+        <Header>
           <h1>Virtual Kiwi!</h1>
           <p>Welcome to your personal kiwi!</p>
-        </HomeHeader>
+        </Header>
         {showLoginForm && (
           <LoginForm
             loginFormData={loginFormData}
@@ -112,7 +112,7 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
           )}
         </ButtonWrapper>
       </HomeHeroContainer>
-    </HomeContainer>
+    </Container>
   );
 };
 

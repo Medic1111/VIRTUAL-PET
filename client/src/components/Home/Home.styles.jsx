@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const HomeContainer = styled.div`
+export const Container = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,14 +10,14 @@ export const HomeContainer = styled.div`
   @media (max-width: 800px) {
     width: 40vw;
     margin: 0 auto;
-    transform: translate(0%, -10%);
+    transform: translate(0%, 0%);
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 `;
 
-export const HomeImage = styled.div`
+export const ImageWrapper = styled.div`
   align-self: center;
   transform: translateX(10%);
   img {
@@ -28,10 +28,13 @@ export const HomeImage = styled.div`
   @media (max-width: 800px) {
     transform: translateX(0%);
     img {
+      width: 50rem;
+      height: calc(100rem / 3);
       scale: 0.7;
     }
   }
-  @media (max-width: 600px) {
+
+  @media (max-width: 700px) {
     img {
       width: 40rem;
       height: calc(80rem / 3);
@@ -39,7 +42,7 @@ export const HomeImage = styled.div`
   }
 `;
 
-export const HomeHeader = styled.div`
+export const Header = styled.div`
   width: 32rem;
   h1 {
     font-size: 7.2rem;
@@ -82,20 +85,7 @@ export const ButtonWrapper = styled.div`
   transition: all 0.2s;
   ${({ showLoginForm }) => showLoginForm && ButtonLoginAnimation}
   ${({ showRegisterForm }) => showRegisterForm && ButtonRegisterAnimation}
-   
-  button {
-    width: 50%;
-    padding: 0.4rem;
-    font-size: 3rem;
-    border-radius: 6px;
-    font-weight: 700;
-    transition: all 0.2s;
-    font-family: "Indie Flower", cursive, sans-serif;
-    &:hover,
-    &:active {
-      cursor: pointer;
-    }
-  }
+
   p {
     position: absolute;
     color: red;
@@ -107,6 +97,17 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonBase = styled.button`
+  width: 50%;
+  padding: 0.4rem;
+  font-size: 3rem;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: all 0.2s;
+  font-family: "Indie Flower", cursive, sans-serif;
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
   background-color: #604623;
   border: 1px solid #604623;
   color: #fff;
@@ -117,7 +118,7 @@ export const ButtonBase = styled.button`
   }
 `;
 
-export const ButtonInverted = styled.button`
+export const ButtonInverted = styled(ButtonBase)`
   background-color: #fff;
   border: 1px solid #604623;
   color: #604623;
