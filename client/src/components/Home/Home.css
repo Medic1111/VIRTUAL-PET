@@ -1,40 +1,28 @@
-.home--container {
+.home__container {
   height: 100vh;
   display: flex;
   justify-content: center;
   padding-bottom: 10rem;
-  transform: translateX(-10%);
+  transform: translateX(-5%);
 }
 
-.home-hero--wrapper {
+.home_img__wrapper {
   align-self: center;
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  transform: translateX(10%);
 }
 
-.home-hero-img--wrapper {
-  align-self: center;
-  justify-self: flex-end;
-  transform: translateX(5rem) !important;
-}
-
-.kiwiIMG {
+.kiwi_img {
   width: 60rem;
   height: 40rem;
 }
 
-@media (max-width: 700px) {
-  .home--container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .kiwiIMG {
-    scale: 0.7;
-  }
+.home_hero__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-18%);
+  gap: 1rem;
 }
 
 h1 {
@@ -42,7 +30,13 @@ h1 {
   padding-bottom: 0;
 }
 
-.home-button--wrapper {
+.hero_desc {
+  font-size: 2rem;
+  text-align: center;
+  transform: translateY(-1.5rem);
+}
+
+.home_button__wrapper {
   margin: 1rem 0;
   display: flex;
   width: 27.5rem;
@@ -52,22 +46,16 @@ h1 {
   transition: all 0.2s;
 }
 
-.button-login-animation {
-  transform: translateY(16rem);
-}
-
-.button-register-animation {
-  transform: translateY(19rem);
-}
-
-.desc {
-  font-size: 2rem;
-  text-align: center;
-  transform: translateY(-1.5rem);
-}
-
-.home-button--wrapper .button {
+.home_button__wrapper .button {
   width: 50%;
+}
+
+.button_login_animation {
+  transform: translateY(17rem);
+}
+
+.button_register_animation {
+  transform: translateY(20rem);
 }
 
 .button {
@@ -84,32 +72,39 @@ h1 {
   cursor: pointer;
 }
 
-.button-base {
+.button_base {
   background-color: #604623;
   border: 1px solid #604623;
   color: #fff;
 }
 
-.button-base:hover,
-.button-base:active {
+.button_base:hover,
+.button_base:active {
   background-color: #fff;
   color: #604623;
 }
 
-.button-inverted {
+.button_inverted {
   background-color: #fff;
   border: 1px solid #604623;
   color: #604623;
 }
 
-.button-inverted:hover,
-.button-inverted:active {
+.button_inverted:hover,
+.button_inverted:active {
   background-color: #604623;
   color: #fff;
 }
 
-.error-message {
-  margin-top: -1rem;
+.error_message {
+  position: absolute;
   color: red;
   font-size: 1.4rem;
+  top: -50%;
+  right: 50%;
+  transform: translate(50%, 15%);
+}
+
+.hero_header {
+  width: 32rem;
 }

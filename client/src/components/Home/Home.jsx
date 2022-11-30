@@ -66,19 +66,21 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
 
   const showBackButton = showLoginForm !== showRegisterForm;
 
-  let buttonLoginAnimation = showLoginForm ? " button-login-animation" : "";
+  let buttonLoginAnimation = showLoginForm ? " button_login_animation" : "";
   let buttonRegisterAnimation = showRegisterForm
-    ? " button-register-animation"
+    ? " button_register_animation"
     : "";
 
   return (
-    <div className="home--container">
-      <div className="home-hero-img--wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
+    <div className="home__container">
+      <div className="home_img__wrapper">
+        <img src={KiwiImg} alt="cute brown bird" className="kiwi_img" />
       </div>
-      <div className="home-hero--wrapper">
-        <h1>Virtual Kiwi!</h1>
-        <p className="desc">Welcome to your personal kiwi!</p>
+      <div className="home_hero__container">
+        <div className="hero_header">
+          <h1>Virtual Kiwi!</h1>
+          <p className="hero_desc">Welcome to your personal kiwi!</p>
+        </div>
         {showLoginForm && (
           <LoginForm
             loginFormData={loginFormData}
@@ -93,31 +95,31 @@ const Home = ({ setIsAuth, setCurrentUser }) => {
         )}
         <div
           className={
-            "home-button--wrapper" +
+            "home_button__wrapper" +
             buttonLoginAnimation +
             buttonRegisterAnimation
           }
         >
+          {errorMessage && <p className="error_message">{errorMessage}</p>}
           {!showRegisterForm && (
-            <button className="button button-base" onClick={handleLogin}>
+            <button className="button button_base" onClick={handleLogin}>
               Login
             </button>
           )}
           {showBackButton && (
             <button
-              className="button button-inverted"
+              className="button button_inverted"
               onClick={handleBackButton}
             >
               Back
             </button>
           )}
           {!showLoginForm && (
-            <button className="button button-inverted" onClick={handleRegister}>
+            <button className="button button_inverted" onClick={handleRegister}>
               Register
             </button>
           )}
         </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );
