@@ -10,4 +10,5 @@ html {
 
 body {
   font-family: "Indie Flower", cursive, sans-serif;
+  overflow: hidden;
 }

@@ -10,6 +10,20 @@ import DeadKiwi from "../../assets/imgs/kiwi-dead.png";
 import SpeechBubble from "../../assets/imgs/speech-bubble.svg";
 import axios from "axios";
 import { clearLocalStorage } from "../../utils/utils";
+import {
+  Container,
+  ImageWrapper,
+  ButtonBase,
+  Header,
+} from "../Home/Home.styles";
+import {
+  SpeechBubbleContainer,
+  MainContainer,
+  PetContainer,
+  PetActionsContainer,
+  PetActionButton,
+  StatsContainer,
+} from "./Main.styles";
 
 const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   const { pet, username } = currentUser;
@@ -20,10 +34,10 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   const [study, setStudy] = useState(smart_level);
   const [health, setHealth] = useState(health_level);
 
-  const [actionClicked, setActionClicked] = useState(false);
+  const [actionClicked, setActionClicked] = useState(true);
 
   const [kiwiImage, setKiwiImage] = useState("");
-  const [kiwiMessage, setKiwiMessage] = useState("");
+  const [kiwiMessage, setKiwiMessage] = useState("noo im hundryu..!!");
   const [kiwiIsDead, setKiwiIsDead] = useState(false);
 
   useEffect(() => {
@@ -84,7 +98,7 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
       return;
     };
     setDiff(stat);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAction = async (parameter, state, action) => {
     if (kiwiIsDead) return;
@@ -118,74 +132,49 @@ const Main = ({ currentUser, setCurrentUser, setIsAuth }) => {
   };
 
   return (
-    <div className="home--container">
-      <div className="home-hero-img--wrapper">
-        <img src={KiwiImg} alt="cute brown bird" className="kiwiIMG" />
-      </div>
+    <Container>
+      <ImageWrapper>
+        <img src={KiwiImg} alt="cute brown bird" />
+      </ImageWrapper>
       {actionClicked && (
-        <div className="speech-bubble">
-          <img src={SpeechBubble} alt="text-bubble" className="kiwiIMG" />
-          <p className="kiwiMessage">{kiwiMessage}</p>
-        </div>
+        <SpeechBubbleContainer>
+          <p>{kiwiMessage}</p>
+          <img src={SpeechBubble} alt="speech bubble" />
+        </SpeechBubbleContainer>
       )}
-      <div className="home-hero--wrapper">
-        <div className="header-kiwi-box">
-          <h1 className="header-kiwi">Virtual Kiwi!</h1>
-          <p className="desc header-kiwi">Welcome to your personal kiwi!</p>
-        </div>
-        <div className="pet-box">
-          <img src={kiwiImage} alt="its an egg" className="egg" />
-        </div>
-        <div className="stats--container">
-          <div className="stats--wrapper">
+      <MainContainer>
+        <Header>
+          <h1>Virtual Kiwi!</h1>
+          <p>Welcome to your personal kiwi!</p>
+        </Header>
+        <PetContainer>
+          <img src={kiwiImage} alt="draw of a kiwi" />
+        </PetContainer>
+        <StatsContainer>
+          <div>
             <p>Health: {health}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div>
             <p>Food: {feed}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div>
             <p>Happy: {play}%</p>
           </div>
-          <div className="stats--wrapper">
+          <div>
             <p>Smart: {study}%</p>
           </div>
-        </div>
+        </StatsContainer>
         {!kiwiIsDead && (
-          <div className="pet-actions-box">
-            <button
-              onClick={handleFeed}
-              className="button button-base button-action btn-kiwi"
-            >
-              Feed
-            </button>
-            <button
-              onClick={handleHealth}
-              className="button button-base button-action btn-kiwi"
-            >
-              Vet
-            </button>
-            <button
-              onClick={handlePlay}
-              className="button button-base button-action btn-kiwi"
-            >
-              Play
-            </button>
-            <button
-              onClick={handleStudy}
-              className="button button-base button-action btn-kiwi"
-            >
-              Study
-            </button>
-          </div>
+          <PetActionsContainer>
+            <PetActionButton onClick={handleFeed}>Feed</PetActionButton>
+            <PetActionButton onClick={handleHealth}>Vet</PetActionButton>
+            <PetActionButton onClick={handlePlay}>Play</PetActionButton>
+            <PetActionButton onClick={handleStudy}>Study</PetActionButton>
+          </PetActionsContainer>
         )}
-        <button
-          onClick={handleLogout}
-          className="button button-base button-logout"
-        >
-          Logout
-        </button>
-      </div>
-    </div>
+        <ButtonBase onClick={handleLogout}>Logout</ButtonBase>
+      </MainContainer>
+    </Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import './LoginForm.css';
+import { FormContainer } from "./LoginForm.styles";
 
 const LoginForm = ({ loginFormData, setLoginFormData }) => {
   const handleInputData = (event) => {
@@ -7,9 +7,8 @@ const LoginForm = ({ loginFormData, setLoginFormData }) => {
   };
 
   return (
-    <form className="login-form--container">
+    <FormContainer>
       <input
-        className="form-input"
         type="text"
         name="username"
         placeholder="Username"
@@ -17,14 +16,13 @@ const LoginForm = ({ loginFormData, setLoginFormData }) => {
         onChange={handleInputData}
       />
       <input
-        className="form-input"
         type="password"
         name="password"
         placeholder="Password"
         value={loginFormData.password}
         onChange={handleInputData}
       />
-    </form>
+    </FormContainer>
   );
 };
 
