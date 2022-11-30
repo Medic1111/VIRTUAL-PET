@@ -1,4 +1,4 @@
-import './RegisterForm.css';
+import { FormContainer } from "../LoginForm/LoginForm.styles";
 
 const RegisterForm = ({ registerFormData, setRegisterFormData }) => {
   const handleInputData = (event) => {
@@ -7,9 +7,8 @@ const RegisterForm = ({ registerFormData, setRegisterFormData }) => {
   };
 
   return (
-    <form className="register-form--container">
+    <FormContainer>
       <input
-        className="form-input"
         type="text"
         name="username"
         placeholder="Username"
@@ -17,7 +16,6 @@ const RegisterForm = ({ registerFormData, setRegisterFormData }) => {
         onChange={handleInputData}
       />
       <input
-        className="form-input"
         type="password"
         name="password"
         placeholder="Password"
@@ -25,14 +23,13 @@ const RegisterForm = ({ registerFormData, setRegisterFormData }) => {
         onChange={handleInputData}
       />
       <input
-        className="form-input"
         type="email"
         name="email"
         placeholder="Email"
         value={registerFormData.email}
         onChange={handleInputData}
       />
-    </form>
+    </FormContainer>
   );
 };
 
