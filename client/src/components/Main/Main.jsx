@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Main.css";
+
 import KiwiImg from "../../assets/imgs/kiwi1.png";
 import Egg from "../../assets/imgs/egg-gif.gif";
 import BabyKiwi from "../../assets/imgs/baby-kiwi.png";
